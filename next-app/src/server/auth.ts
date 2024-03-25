@@ -51,6 +51,7 @@ export const authOptions: NextAuthOptions = {
     GithubProvider({
       clientId: env.GITHUB_CLIENT_ID,
       clientSecret: env.GITHUB_CLIENT_SECRET,
+      checks: ['none']
     }),
     /**
      * ...add more providers here.
@@ -62,6 +63,7 @@ export const authOptions: NextAuthOptions = {
      * @see https://next-auth.js.org/providers/github
      */
   ],
+  // callbacks: { async redirect({ url, baseUrl }) { return baseUrl }, }
 };
 
 /**
