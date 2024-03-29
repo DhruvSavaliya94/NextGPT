@@ -13,7 +13,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@auth/prisma-adapter": "^1.4.0",
+    "@clerk/nextjs": "^4.29.9",
     "@prisma/client": "^5.10.2",
     "@t3-oss/env-nextjs": "^0.9.2",
     "@tanstack/react-query": "^5.25.0",
@@ -22,9 +22,9 @@
     "@trpc/react-query": "next",
     "@trpc/server": "next",
     "next": "^14.1.3",
-    "next-auth": "^4.24.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-dropzone": "^14.2.3",
     "server-only": "^0.0.1",
     "superjson": "^2.2.1",
     "zod": "^3.22.4"
