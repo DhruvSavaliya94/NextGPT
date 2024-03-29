@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import { ClerkProvider } from '@clerk/nextjs'
 
 import { Inter } from "next/font/google";
 
@@ -11,7 +12,7 @@ const inter = Inter({
 
 export const metadata = {
   title: "NextGPT",
-  description: "Create custom GPTfor your data",
+  description: "create RAG for effective information retrieval",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
@@ -23,8 +24,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans ${inter.variable}`}>
+      <ClerkProvider>
         <TRPCReactProvider>{children}</TRPCReactProvider>
+      </ClerkProvider>
       </body>
     </html>
   );
 }
+
+
+
