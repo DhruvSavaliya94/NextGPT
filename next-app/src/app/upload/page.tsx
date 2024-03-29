@@ -1,29 +1,19 @@
 'use client';
 import Link from 'next/link';
 // Import React and React Dropzone
-import React, { useCallback, useState } from 'react';
-import { useDropzone, DropzoneInputProps  } from 'react-dropzone';
+import React from 'react';
+import { useDropzone,   } from 'react-dropzone';
 
 
 const FileUploadComponent: React.FC = () => {
-  const [files, setFiles] = useState<File[]>([]);
-
-  const onDrop = useCallback((acceptedFiles: File[]) => {
-    // Append the accepted files to the current file state
-    setFiles(currentFiles => [...currentFiles, ...acceptedFiles]);
-  }, []);
-
-  const { getRootProps, getInputProps } = useDropzone({ onDrop })  as {
-    getRootProps: (props?: unknown) => { refKey: string; onKeyDown: (event: KeyboardEvent) => void };
-    getInputProps: (props?: DropzoneInputProps) => DropzoneInputProps;
-  };
+  const {getRootProps, getInputProps, acceptedFiles} = useDropzone();
 
   const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
     // Implement the file upload logic here.
     // This is a placeholder for the upload logic.
-    console.log('Submitting files:', files);
+    console.log('Submitting files:', acceptedFiles);
 
     // After submission, you might want to clear the selected files
     // setFiles([]);
@@ -33,13 +23,13 @@ const FileUploadComponent: React.FC = () => {
          <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
       <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
     
-      <h2 className='p-4'>Files Upload</h2>
-      <div {...getRootProps()} style={{ border: '2px dashed #007bff', padding: '20px', cursor: 'pointer' }}>
+      <h1 className='p-4'>Files Upload</h1>
+      <div {...getRootProps({className: 'dropzone'})} style={{ border: '2px dashed #007bff', padding: '20px', cursor: 'pointer' }}>
         <input {...getInputProps()} />
         <p>{"Drag 'n' drop some files here, or click to select files"}</p>
       </div>
       <ul className='p-4'>
-        {files.map((file, index) => (
+        {acceptedFiles.map((file, index) => (
           <li key={index}>{file.name}</li>
         ))}
       </ul>
